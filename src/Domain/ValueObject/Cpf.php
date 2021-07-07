@@ -20,7 +20,7 @@ final class Cpf
     private function validate($cpf)
     {
 
-        // Extrai somente os números
+        // Extract only numbers
         $cpf = preg_replace('/[^0-9]/is', '', $cpf);
 
         // Not 11 digits or all repeated. Ex: 111.111.111-11
