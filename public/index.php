@@ -1,10 +1,12 @@
 <?php
 
+declare(strict_types=1);
+
+use App\Domain\Entity\Registration;
 use App\Domain\ValueObject\Cpf;
 use App\Domain\ValueObject\Email;
-use App\Domain\Entity\Registration;
-use App\Application\UseCase\ExportRegistration\InputBoundary;
-use App\Application\UseCase\ExportRegistration\ExportRegistration;
+// use App\Application\UseCase\ExportRegistration\InputBoundary;
+// use App\Application\UseCase\ExportRegistration\ExportRegistration;
 
 require_once '../vendor/autoload.php';
 
@@ -33,9 +35,9 @@ var_dump($registration);
 // $inputBoundary = new InputBoundary('370.100.370-00', 'xpto', '/../storage');
 // $outputBoundary = $exportRegistrationUseCase->handle($inputBoundary);
 
-$loadRegistrationRepository = new StdClass();
-$pdfExporter = new StdClass();
-$storage = new StdClass();
+// $loadRegistrationRepository = new StdClass();
+// $pdfExporter = new StdClass();
+// $storage = new StdClass();
 
 // $exportRegistrationUseCase = new ExportRegistration($loadRegistrationRepository, $pdfExporter, $storage);
 // $inputBoundary = new InputBoundary('370.100.370-00', 'xpto', '/../storage');

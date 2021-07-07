@@ -1,25 +1,25 @@
 {
-  "name": "devontherun/php-clean-arch-onlyn-registration",
-  "authors": [
-    {
-      "name": "Filipe Leuch Bonfim",
-      "email": "filipe1309@gmail.com"
+    "name": "devontherun/php-clean-arch-onlyn-registration",
+    "description": "php-clean-arch-onlyn-registration",
+    "authors": [{
+        "name": "Filipe Leuch Bonfim",
+        "email": "filipe1309@gmail.com"
+    }],
+    "license": "MIT",
+    "require": {
+        "php": ">=8.0",
+        "ext-pdo": "*"
+    },
+    "autoload": {
+        "psr-4": {
+            "App\\": "src"
+        }
+    },
+    "require-dev": {
+        "nunomaduro/phpinsights": "^2.0",
+        "phpstan/phpstan": "^0.12.91",
+        "phpunit/phpunit": "^9.5",
+        "friendsofphp/php-cs-fixer": "^3.0",
+        "squizlabs/php_codesniffer": "^3.6"
     }
-  ],
-  "require": {
-    "php": ">=8.0",
-    "ext-pdo": "*"
-  },
-  "autoload": {
-    "psr-4": {
-      "App\\": "src"
-    }
-  },
-  "require-dev": {
-    "nunomaduro/phpinsights": "^2.0",
-    "phpstan/phpstan": "^0.12.91",
-    "phpunit/phpunit": "^9.5",
-    "friendsofphp/php-cs-fixer": "^3.0",
-    "squizlabs/php_codesniffer": "^3.6"
-  }
 }

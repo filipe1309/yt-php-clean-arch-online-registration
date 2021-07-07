@@ -1,16 +1,18 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\Application\UseCase\ExportRegistration;
 
 use App\Domain\ValueObject\Cpf;
 use App\Application\Contract\Storage;
 use App\Application\Contract\ExportRegistrationPdfExporter;
-use App\Domain\Repository\LoadRegistrationRepositoryInterface;
+use App\Domain\Repository\ILoadRegistrationRepository;
 
 final class ExportRegistration
 {
     public function __construct(
-        private LoadRegistrationRepositoryInterface $repository,
+        private ILoadRegistrationRepository $repository,
         private ExportRegistrationPdfExporter $pdfExporter,
         private Storage $storage,
     ) {
