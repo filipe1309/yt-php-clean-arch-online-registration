@@ -17,7 +17,7 @@ final class Cpf
         $this->cpf = $cpf;
     }
 
-    private function validate($cpf)
+    private function validate(string $cpf): bool
     {
 
         // Extract only numbers
@@ -31,10 +31,10 @@ final class Cpf
         // Module 11 to validate CPF
         for ($t = 9; $t < 11; $t++) {
             for ($d = 0, $c = 0; $c < $t; $c++) {
-                $d += $cpf[$c] * (($t + 1) - $c);
+                $d += (int) $cpf[$c] * (($t + 1) - $c);
             }
             $d = ((10 * $d) % 11) % 10;
-            if ($cpf[$c] !== $d) {
+            if ((int) $cpf[$c] !== $d) {
                 return false;
             }
         }

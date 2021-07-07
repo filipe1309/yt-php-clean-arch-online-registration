@@ -10,6 +10,9 @@ final class OutputBoundary
     private string $registrationNumber;
     private string $registrationAt;
 
+    /**
+     * @param array<string, string> $values
+     */
     public function __construct(array $values)
     {
         $this->name = $values['name'] ?? '';
