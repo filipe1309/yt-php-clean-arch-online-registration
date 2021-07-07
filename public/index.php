@@ -10,7 +10,7 @@ require_once '../vendor/autoload.php';
 
 // Ep 2 - Domain Layer example
 
-$registration =  new Registration;
+$registration =  new Registration();
 $registration->setName('John')
     ->setBirthDate(new DateTimeImmutable('2010-01-02'))
     ->setEmail(new Email('john.doe@test.com'))

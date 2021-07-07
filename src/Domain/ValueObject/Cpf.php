@@ -24,7 +24,7 @@ final class Cpf
         $cpf = preg_replace('/[^0-9]/is', '', $cpf);
 
         // Not 11 digits or all repeated. Ex: 111.111.111-11
-        if ((strlen($cpf) != 11) || preg_match('/(\d)\1{10}/', $cpf)) {
+        if ((strlen($cpf) !== 11) || preg_match('/(\d)\1{10}/', $cpf)) {
             return false;
         }
 
@@ -34,7 +34,7 @@ final class Cpf
                 $d += $cpf[$c] * (($t + 1) - $c);
             }
             $d = ((10 * $d) % 11) % 10;
-            if ($cpf[$c] != $d) {
+            if ($cpf[$c] !== $d) {
                 return false;
             }
         }
