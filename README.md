@@ -9,6 +9,10 @@
 
 This project was developed following Yii Academy Youtube's playlist [Clean Architecture](https://www.youtube.com/playlist?list=PLBD8to5dJhvyr07t03AjYYQ_8LNHrQKF4) course.
 
+## Clean Architecture
+
+![Clean Architecture](clean-architecture.png)
+
 ## :computer: Technologies
 
 - [Docker](https://www.docker.com/)
