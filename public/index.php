@@ -25,3 +25,18 @@ var_dump($registration);
 // $exportRegistrationUseCase = new ExportRegistration(MISS_IMPLMENTATION);
 // $inputBoundary = new InputBoundary('370.100.370-00');
 // $outputBoundary = $exportRegistrationUseCase->handle($inputBoundary);
+
+
+// Ep 4 - Application PDF Tool & Storage 
+
+// $exportRegistrationUseCase = new ExportRegistration(MISS_IMPLMENTATION);
+// $inputBoundary = new InputBoundary('370.100.370-00', 'xpto', '/../storage');
+// $outputBoundary = $exportRegistrationUseCase->handle($inputBoundary);
+
+$loadRegistrationRepository = new StdClass();
+$pdfExporter = new StdClass();
+$storage = new StdClass();
+
+// $exportRegistrationUseCase = new ExportRegistration($loadRegistrationRepository, $pdfExporter, $storage);
+// $inputBoundary = new InputBoundary('370.100.370-00', 'xpto', '/../storage');
+// $outputBoundary = $exportRegistrationUseCase->handle($inputBoundary);

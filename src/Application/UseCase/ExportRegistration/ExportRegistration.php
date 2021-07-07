@@ -2,14 +2,17 @@
 
 namespace App\Application\UseCase\ExportRegistration;
 
-use DateTime;
 use App\Domain\ValueObject\Cpf;
+use App\Application\Contract\Storage;
+use App\Application\Contract\ExportRegistrationPdfExporter;
 use App\Domain\Repository\LoadRegistrationRepositoryInterface;
 
 final class ExportRegistration
 {
     public function __construct(
-        private LoadRegistrationRepositoryInterface $repository
+        private LoadRegistrationRepositoryInterface $repository,
+        private ExportRegistrationPdfExporter $pdfExporter,
+        private Storage $storage,
     ) {
     }
 
@@ -17,12 +20,11 @@ final class ExportRegistration
     {
         $cpf = new Cpf($input->getRegistrationNumber());
         $registration = $this->repository->loadByRegistrationNumber($cpf);
-        return new OutputBoundary([
-            'name' => $registration->getName(),
-            'email' => (string) $registration->getEmail(),
-            'birthDate' => $registration->getBirthDate()->format(DateTime::ATOM),
-            'registrationNumber' => (string) $registration->getRegistrationNumber(),
-            'registrationAt' => $registration->getRegistrationAt()->format(DateTime::ATOM),
-        ]);
+
+        $fileContent = $this->pdfExporter->generate($registration);
+
+        $this->storage->store($input->getPdfFileName(), $input->getPath(), $fileContent);
+
+        return new OutputBoundary($input->getPath() . DIRECTORY_SEPARATOR . $input->getPdfFileName());
     }
 }
