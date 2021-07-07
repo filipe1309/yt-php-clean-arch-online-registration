@@ -11,7 +11,7 @@ This project was developed following Yii Academy Youtube's playlist [Clean Archi
 
 ## Clean Architecture
 
-![Clean Architecture](clean-architecture.png)
+![Clean Architecture](clean-architecture.jpg)
 
 ## :computer: Technologies
 
@@ -19,6 +19,11 @@ This project was developed following Yii Academy Youtube's playlist [Clean Archi
 - [Docker Compose](https://docs.docker.com/compose/)
 - [PHP 8](https://www.php.net/)
 - [Nginx](https://www.nginx.com/)
+- [PHPUnit](https://phpunit.de/)
+- [PHPStan](https://phpstan.org/)
+- [PHP Insights](https://phpinsights.com/)
+- [PHP_CodeSniffer](https://github.com/squizlabs/PHP_CodeSniffer)
+- [PHP Coding Standards Fixer](https://cs.symfony.com/)
 
 ## :scroll: Requirements
 
@@ -42,6 +47,14 @@ docker-compose up
 ```
 
 > Access http://localhost
+
+## :white_check_mark: Tests
+
+After up the container:
+
+```sh
+docker exec -it docker-php8-php ./vendor/bin/phpunit
+```
 
 ## License
 
