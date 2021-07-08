@@ -5,6 +5,8 @@ declare(strict_types=1);
 use App\Domain\Entity\Registration;
 use App\Domain\ValueObject\Cpf;
 use App\Domain\ValueObject\Email;
+use App\Infrastructure\Adapter\Html2PdfAdapter;
+
 // use App\Application\UseCase\ExportRegistration\InputBoundary;
 // use App\Application\UseCase\ExportRegistration\ExportRegistration;
 
@@ -36,7 +38,7 @@ var_dump($registration);
 // $outputBoundary = $exportRegistrationUseCase->handle($inputBoundary);
 
 // $loadRegistrationRepository = new StdClass();
-// $pdfExporter = new StdClass();
+$pdfExporter = new Html2PdfAdapter();
 // $storage = new StdClass();
 
 // $exportRegistrationUseCase = new ExportRegistration($loadRegistrationRepository, $pdfExporter, $storage);
