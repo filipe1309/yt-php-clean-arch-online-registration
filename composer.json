@@ -9,7 +9,7 @@
     "require": {
         "php": ">=8.0",
         "ext-pdo": "*",
-        "spipu/html2pdf": "^4.6"
+        "dompdf/dompdf": "^1.0"
     },
     "autoload": {
         "psr-4": {

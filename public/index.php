@@ -5,7 +5,8 @@ declare(strict_types=1);
 use App\Domain\Entity\Registration;
 use App\Domain\ValueObject\Cpf;
 use App\Domain\ValueObject\Email;
-use App\Infrastructure\Adapter\Html2PdfAdapter;
+use App\Infrastructure\Adapter\DomPdfAdapter;
+use App\Infrastructure\Adapter\LocalStorageAdapter;
 
 // use App\Application\UseCase\ExportRegistration\InputBoundary;
 // use App\Application\UseCase\ExportRegistration\ExportRegistration;
@@ -21,8 +22,8 @@ $registration->setName('John')
     ->setRegistrationAt(new DateTimeImmutable())
     ->setRegistrationNumber(new Cpf('370.100.370-00'));
 
-echo '<pre>';
-var_dump($registration);
+// echo '<pre>';
+// var_dump($registration);
 
 // Ep 3 - Application Layer example
 
@@ -38,8 +39,10 @@ var_dump($registration);
 // $outputBoundary = $exportRegistrationUseCase->handle($inputBoundary);
 
 // $loadRegistrationRepository = new StdClass();
-$pdfExporter = new Html2PdfAdapter();
-// $storage = new StdClass();
+$pdfExporter = new DomPdfAdapter();
+$storage = new LocalStorageAdapter();
+
+echo $pdfExporter->generate($registration);
 
 // $exportRegistrationUseCase = new ExportRegistration($loadRegistrationRepository, $pdfExporter, $storage);
 // $inputBoundary = new InputBoundary('370.100.370-00', 'xpto', '/../storage');
