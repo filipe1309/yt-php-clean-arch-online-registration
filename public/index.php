@@ -42,7 +42,8 @@ $registration->setName('John')
 $pdfExporter = new DomPdfAdapter();
 $storage = new LocalStorageAdapter();
 
-echo $pdfExporter->generate($registration);
+$content = $pdfExporter->generate($registration);
+$storage->store('test.pdf', '../storage/registrations', $content);
 
 // $exportRegistrationUseCase = new ExportRegistration($loadRegistrationRepository, $pdfExporter, $storage);
 // $inputBoundary = new InputBoundary('370.100.370-00', 'xpto', '/../storage');
