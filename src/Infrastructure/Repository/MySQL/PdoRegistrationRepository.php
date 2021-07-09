@@ -5,9 +5,9 @@ declare(strict_types=1);
 namespace App\Infrastructure\Repository\MySQL;
 
 use PDO;
-use InvalidArgumentException;
 use App\Domain\ValueObject\Cpf;
 use App\Domain\Entity\Registration;
+use App\Domain\Exception\RegistrationNotFoundException;
 use App\Domain\Repository\ILoadRegistrationRepository;
 use App\Domain\ValueObject\Email;
 use DateTimeImmutable;
@@ -26,7 +26,7 @@ final class PdoRegistrationRepository implements ILoadRegistrationRepository
         $record = $stmt->fetch();
 
         if (!$record) {
-            throw new InvalidArgumentException('Registration not found');
+            throw new RegistrationNotFoundException($cpf);
         }
 
         $registration =  new Registration();
