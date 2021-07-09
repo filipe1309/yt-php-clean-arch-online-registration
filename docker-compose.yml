@@ -52,20 +52,21 @@ services:
   #      - MYSQL_ROOT_PASSWORD=root
   #      - MYSQL_DATABASE=development
 
-  #  mysql:
-  #    image: mysql:8
-  #    tty: true
-  #    restart: always
-  #    container_name: docker-php8-mysql
-  #    ports:
-  #      - '3306:3306'
-  #    volumes:
-  #      - './docker/mysql/config/mysql.cnf:/etc/mysql/conf.d/custom.cnf:ro'
-  #      - './docker/mysql/database:/var/lib/mysql'
-  #    environment:
-  #      - MYSQL_PASSWORD=root
-  #      - MYSQL_ROOT_PASSWORD=root
-  #      - MYSQL_DATABASE=development
+  mysql:
+    image: mysql:8
+    tty: true
+    restart: always
+    container_name: docker-php8-mysql
+    ports:
+      - "3306:3306"
+    volumes:
+      - "./docker/mysql/config/mysql.cnf:/etc/mysql/conf.d/custom.cnf:ro"
+      - "./docker/mysql/database:/var/lib/mysql"
+      - "./docker/mysql/sql-scripts:/docker-entrypoint-initdb.d/"
+    environment:
+      - MYSQL_PASSWORD=root
+      - MYSQL_ROOT_PASSWORD=root
+      - MYSQL_DATABASE=development
 
   #  phpmyadmin:
   #    image: library/phpmyadmin
