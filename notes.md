@@ -49,3 +49,14 @@ https://www.php.net/manual/pt_BR/function.file-put-contents.php
 composer require spipu/html2pdf
 
 https://github.com/dompdf/dompdf
+
+## EP-6
+
+```sh
+mysql -uroot -p
+show databases;
+use development;
+show tables;
+describe registration;
+SELECT * FROM registration;
+```
