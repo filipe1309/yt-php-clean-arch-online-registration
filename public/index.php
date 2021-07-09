@@ -2,16 +2,18 @@
 
 declare(strict_types=1);
 
+use App\Application\UseCase\ExportRegistration\ExportRegistration;
+use App\Application\UseCase\ExportRegistration\InputBoundary;
 use App\Domain\Entity\Registration;
 use App\Domain\ValueObject\Cpf;
 use App\Domain\ValueObject\Email;
 use App\Infrastructure\Adapter\DomPdfAdapter;
 use App\Infrastructure\Adapter\LocalStorageAdapter;
-
-// use App\Application\UseCase\ExportRegistration\InputBoundary;
-// use App\Application\UseCase\ExportRegistration\ExportRegistration;
+use App\Infrastructure\Repository\MySQL\PdoRegistrationRepository;
 
 require_once '../vendor/autoload.php';
+
+$configs = require __DIR__ . '/../config/app.php';
 
 // Ep 2 - Domain Layer example
 
@@ -38,13 +40,31 @@ $registration->setName('John')
 // $inputBoundary = new InputBoundary('370.100.370-00', 'xpto', '/../storage');
 // $outputBoundary = $exportRegistrationUseCase->handle($inputBoundary);
 
-// $loadRegistrationRepository = new StdClass();
+$dsn = sprintf(
+    'mysql:host=%s;port=%s;dbname=%s;charset=%s',
+    $configs['db']['host'],
+    $configs['db']['port'],
+    $configs['db']['dbname'],
+    $configs['db']['charset']
+);
+
+$pdo = new PDO($dsn, $configs['db']['username'], $configs['db']['password'], [
+    PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION,
+    PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_ASSOC,
+    PDO::ATTR_PERSISTENT => true
+]);
+
+$loadRegistrationRepository = new PdoRegistrationRepository($pdo);
 $pdfExporter = new DomPdfAdapter();
 $storage = new LocalStorageAdapter();
 
-$content = $pdfExporter->generate($registration);
-$storage->store('test.pdf', '../storage/registrations', $content);
+// Storage example
+$entity = $loadRegistrationRepository->loadByRegistrationNumber(new Cpf('37010037000'));
+var_dump($entity);
 
+// Export example
+// $content = $pdfExporter->generate($registration);
+// $storage->store('test.pdf', '../storage/registrations', $content);
 // $exportRegistrationUseCase = new ExportRegistration($loadRegistrationRepository, $pdfExporter, $storage);
 // $inputBoundary = new InputBoundary('370.100.370-00', 'xpto', '/../storage');
 // $outputBoundary = $exportRegistrationUseCase->handle($inputBoundary);
