@@ -60,6 +60,7 @@ $storage = new LocalStorageAdapter();
 
 // Storage example
 $entity = $loadRegistrationRepository->loadByRegistrationNumber(new Cpf('37010037000'));
+echo '<pre>';
 var_dump($entity);
 
 // Export example
