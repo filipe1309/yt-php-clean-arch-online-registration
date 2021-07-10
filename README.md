@@ -3,6 +3,7 @@
 <p align="center">
     <img src="https://img.shields.io/badge/Tools-Docker-informational?style=flat-square&logo=docker&color=2496ED" alt="Docker" />
     <img src="https://img.shields.io/badge/Code-PHP-informational?style=flat-square&logo=php&color=777bb4&logoColor=8892BF" alt="PHP" />
+    <img src="https://img.shields.io/badge/DB-MySQL-informational?style=flat-square&logo=mysql&color=4479A1" alt="MySQL" />
 </p>
 
 ## 💬 About
@@ -19,6 +20,7 @@ This project was developed following Yii Academy Youtube's [Clean Architecture](
 - [Docker Compose](https://docs.docker.com/compose/)
 - [PHP 8](https://www.php.net/)
 - [Nginx](https://www.nginx.com/)
+- [MySQL](https://www.mysql.com/)
 - [PHPUnit](https://phpunit.de/)
 - [PHPStan](https://phpstan.org/)
 - [PHP Insights](https://phpinsights.com/)
