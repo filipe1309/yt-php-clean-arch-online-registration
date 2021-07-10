@@ -60,3 +60,9 @@ show tables;
 describe registration;
 SELECT * FROM registration;
 ```
+
+## EP-7
+
+```sh
+composer require guzzlehttp/guzzle:^7.0
+```
