@@ -18,7 +18,7 @@ final class ExportRegistrationController
     ) {
     }
 
-    public function handle(IPresentation $presentation): string
+    public function handle(IPresentation $presentation): string|false
     {
         $inputBoundary = new InputBoundary('37010037000', 'xpto.pdf', __DIR__ . '/../../../../storage/registrations');
 
