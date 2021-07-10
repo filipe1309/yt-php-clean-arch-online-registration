@@ -9,7 +9,11 @@ use App\Domain\ValueObject\Cpf;
 use App\Domain\ValueObject\Email;
 use App\Infrastructure\Adapter\DomPdfAdapter;
 use App\Infrastructure\Adapter\LocalStorageAdapter;
+use App\Infrastructure\Http\Controller\ExportRegistrationController;
+use App\Infrastructure\Presentation\ExportRegistrationPresenter;
 use App\Infrastructure\Repository\MySQL\PdoRegistrationRepository;
+use GuzzleHttp\Psr7\Request;
+use GuzzleHttp\Psr7\Response;
 
 require_once '../vendor/autoload.php';
 
@@ -59,13 +63,22 @@ $pdfExporter = new DomPdfAdapter();
 $storage = new LocalStorageAdapter();
 
 // Storage example
-$entity = $loadRegistrationRepository->loadByRegistrationNumber(new Cpf('37010037000'));
-echo '<pre>';
-var_dump($entity);
+// $entity = $loadRegistrationRepository->loadByRegistrationNumber(new Cpf('37010037000'));
+// echo '<pre>';
+// var_dump($entity);
 
 // Export example
 // $content = $pdfExporter->generate($registration);
 // $storage->store('test.pdf', '../storage/registrations', $content);
-// $exportRegistrationUseCase = new ExportRegistration($loadRegistrationRepository, $pdfExporter, $storage);
-// $inputBoundary = new InputBoundary('370.100.370-00', 'xpto', '/../storage');
-// $outputBoundary = $exportRegistrationUseCase->handle($inputBoundary);
+$exportRegistrationUseCase = new ExportRegistration($loadRegistrationRepository, $pdfExporter, $storage);
+
+$request =  new Request('GET', 'http://localhost');
+$response = new Response();
+
+// Controllers
+
+$exportRegistrationController = new ExportRegistrationController($request, $response, $exportRegistrationUseCase);
+$exportRegistrationPresenter = new ExportRegistrationPresenter();
+
+header('Content-Type: application/json; charset: utf-8');
+echo $exportRegistrationController->handle($exportRegistrationPresenter);
