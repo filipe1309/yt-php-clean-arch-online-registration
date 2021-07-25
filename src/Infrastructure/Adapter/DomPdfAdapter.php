@@ -19,7 +19,8 @@ final class DomPdfAdapter implements ExportRegistrationPdfExporter
             $options->set('defaultFont', 'Arial');
             $dompdf = new Dompdf($options);
             $dompdf->loadHtml("<p>Nome: {$registration->getName()}</p><p>CPF: {$registration->getRegistrationNumber()}</p>");
-            $dompdf->setPaper('A4');
+            $dompdf->setPaper('A4', 'landscape');
+            $dompdf->render();
 
             return $dompdf->output();
         } catch (Throwable $e) {
