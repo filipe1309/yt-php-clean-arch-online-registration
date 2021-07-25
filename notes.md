@@ -66,3 +66,9 @@ SELECT * FROM registration;
 ```sh
 composer require guzzlehttp/guzzle:^7.0
 ```
+
+## EP-9
+
+```sh
+docker exec docker-php8-php php index-cli.php
+```
