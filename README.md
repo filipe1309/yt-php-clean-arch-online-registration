@@ -55,7 +55,7 @@ docker-compose up
 After up the container:
 
 ```sh
-docker exec -it docker-php8-php ./vendor/bin/phpunit
+./bin/tests.sh
 ```
 
 ## License
