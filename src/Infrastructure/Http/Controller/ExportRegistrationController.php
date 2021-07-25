@@ -20,14 +20,21 @@ final class ExportRegistrationController
 
     public function handle(IPresentation $presentation): Response
     {
-        $inputBoundary = new InputBoundary('37010037000', 'xpto-ctrl.pdf', __DIR__ . '/../../../../storage/registrations');
+        $inputBoundary = new InputBoundary(
+            '37010037000',
+            'xpto-ctrl.pdf',
+            __DIR__ . '/../../../../storage/registrations'
+        );
 
         $output = $this->useCase->handle($inputBoundary);
 
-        $this->response->getBody()->write($presentation->output([
+        $this->response->getBody()->write((string) $presentation->output([
             'fullFileName' => $output->getFullFileName(),
         ]));
 
-        return $this->response->withHeader('Content-Type', 'application/json')->withStatus(200);
+        return $this
+            ->response
+            ->withHeader('Content-Type', 'application/json')
+            ->withStatus(200);
     }
 }

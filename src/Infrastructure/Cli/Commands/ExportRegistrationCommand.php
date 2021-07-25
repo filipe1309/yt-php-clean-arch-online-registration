@@ -15,7 +15,7 @@ final class ExportRegistrationCommand
     ) {
     }
 
-    public function handle(IPresentation $presentation): string
+    public function handle(IPresentation $presentation): string|false
     {
         $inputBoundary = new InputBoundary('37010037000', 'xpto-cli.pdf', __DIR__ . '/../../../../storage/registrations');
 

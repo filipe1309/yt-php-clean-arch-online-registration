@@ -21,7 +21,9 @@ final class PdoRegistrationRepository implements ILoadRegistrationRepository
 
     public function loadByRegistrationNumber(Cpf $cpf): Registration
     {
-        $stmt = $this->pdo->prepare('SELECT * FROM registration WHERE registration_number = :cpf');
+        $stmt = $this->pdo->prepare(
+            'SELECT * FROM registration WHERE registration_number = :cpf'
+        );
         $stmt->execute([':cpf' => (string) $cpf]);
         $record = $stmt->fetch();
 
