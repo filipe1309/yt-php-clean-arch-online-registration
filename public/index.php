@@ -81,4 +81,4 @@ $exportRegistrationController = new ExportRegistrationController($request, $resp
 $exportRegistrationPresenter = new ExportRegistrationPresenter();
 
 header('Content-Type: application/json; charset: utf-8');
-echo $exportRegistrationController->handle($exportRegistrationPresenter);
+echo $exportRegistrationController->handle($exportRegistrationPresenter)->getBody();

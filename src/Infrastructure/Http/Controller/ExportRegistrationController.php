@@ -18,14 +18,16 @@ final class ExportRegistrationController
     ) {
     }
 
-    public function handle(IPresentation $presentation): string|false
+    public function handle(IPresentation $presentation): Response
     {
         $inputBoundary = new InputBoundary('37010037000', 'xpto.pdf', __DIR__ . '/../../../../storage/registrations');
 
         $output = $this->useCase->handle($inputBoundary);
 
-        return $presentation->output([
+        $this->response->getBody()->write($presentation->output([
             'fullFileName' => $output->getFullFileName(),
-        ]);
+        ]));
+
+        return $this->response->withHeader('Content-Type', 'application/json')->withStatus(200);
     }
 }
