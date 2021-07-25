@@ -72,13 +72,11 @@ $storage = new LocalStorageAdapter();
 // $storage->store('test.pdf', '../storage/registrations', $content);
 $exportRegistrationUseCase = new ExportRegistration($loadRegistrationRepository, $pdfExporter, $storage);
 
-$request =  new Request('GET', 'http://localhost');
-$response = new Response();
-
 // Controllers
 
+$request =  new Request('GET', 'http://localhost');
+$response = new Response();
 $exportRegistrationController = new ExportRegistrationController($request, $response, $exportRegistrationUseCase);
 $exportRegistrationPresenter = new ExportRegistrationPresenter();
 
-header('Content-Type: application/json; charset: utf-8');
 echo $exportRegistrationController->handle($exportRegistrationPresenter)->getBody();

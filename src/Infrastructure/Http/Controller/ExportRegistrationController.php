@@ -20,7 +20,7 @@ final class ExportRegistrationController
 
     public function handle(IPresentation $presentation): Response
     {
-        $inputBoundary = new InputBoundary('37010037000', 'xpto.pdf', __DIR__ . '/../../../../storage/registrations');
+        $inputBoundary = new InputBoundary('37010037000', 'xpto-ctrl.pdf', __DIR__ . '/../../../../storage/registrations');
 
         $output = $this->useCase->handle($inputBoundary);
 
